@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bookings — Grand Aura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home.css" />
+</head>
+<body>
+
+<header class="ga-header">
+    <div class="ga-nav">
+        <div class="ga-logo">Grand Aura</div>
+        <nav class="ga-menu">
+            <a href="/">Home</a>
+            <a href="/bookings/create">New Booking</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </div>
+    </header>
+
+<section class="ga-form-hero">
+    <div class="ga-form-hero-inner">
+        <h1 class="ga-hero-title">My Bookings</h1>
+        <p class="ga-hero-sub">Your weddings curated with Grand Aura.</p>
+        <div th:if="${customerEmail}" class="ga-hero-sub" style="opacity:0.8; font-size:14px">Signed in as <span th:text="${customerEmail}"></span></div>
+    </div>
+</section>
+
+<section class="ga-form-section">
+    <div class="ga-form-card">
+        <div th:if="${message}" class="ga-alert ga-alert-success" th:text="${message}"></div>
+
+        <table style="width:100%; border-collapse: collapse;">
+            <thead>
+            <tr>
+                <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06)">Date</th>
+                <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06)">Bride & Groom</th>
+                <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06)">Venue</th>
+                <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06)">Catering</th>
+                <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06)">Menu Items</th>
+                <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06)">Guests</th>
+                <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06)">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(bookings)}">
+                <td colspan="7" style="padding:12px; color:#666">No bookings yet.</td>
+            </tr>
+            <tr th:each="b : ${bookings}">
+                <td style="padding:10px" th:text="${b.weddingDate}"></td>
+                <td style="padding:10px" th:text="${(b.brideName != null ? b.brideName : 'Bride') + ' & ' + (b.groomName != null ? b.groomName : 'Groom')}"></td>
+                <td style="padding:10px" th:text="${b.preferredVenue != null ? b.preferredVenue : b.venue}"></td>
+                <td style="padding:10px" th:text="${b.cateringPackage != null ? b.cateringPackage : 'Not selected'}"></td>
+                <td style="padding:10px" th:text="${b.selectedMenuItems != null ? b.selectedMenuItems : 'None selected'}"></td>
+                <td style="padding:10px" th:text="${b.guestCount}"></td>
+                <td style="padding:10px">
+                    <a class="ga-cta ga-cta-secondary" th:href="@{'/api/bookings/' + ${b.id} + '/edit'}">Edit</a>
+                    <form th:action="@{'/api/bookings/' + ${b.id} + '/delete'}" method="post" style="display:inline">
+                        <div th:if="${_csrf}">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        </div>
+                        <button class="ga-cta" type="submit" onclick="return confirm('Delete booking?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register — Grand Aura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home.css" />
+</head>
+<body>
+
+<header class="ga-header">
+    <div class="ga-nav">
+        <div class="ga-logo">Grand Aura</div>
+        <nav class="ga-menu">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+        </nav>
+    </div>
+</header>
+
+<section class="ga-form-section">
+    <div class="ga-form-card">
+        <div class="ga-alert" th:if="${message}" th:text="${message}"></div>
+        <form method="post" action="/register">
+            <div class="ga-field">
+                <label>Email</label>
+                <input class="ga-input" type="email" name="email" required maxlength="160" />
+            </div>
+            <div class="ga-field">
+                <label>Password (min 8 characters)</label>
+                <input class="ga-input" type="password" name="password" required minlength="8" />
+            </div>
+            <div class="ga-actions">
+                <a class="ga-cta ga-cta-secondary" href="/">Cancel</a>
+                <button class="ga-cta" type="submit">Create Account</button>
+            </div>
+        </form>
+        <div style="text-align: center; margin-top: 16px; font-size: 14px; color: #666;">
+            Already have an account? <a href="/login" style="color: var(--gold); text-decoration: none;">Login here</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
+

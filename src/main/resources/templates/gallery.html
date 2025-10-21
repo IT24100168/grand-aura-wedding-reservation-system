@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery — Grand Aura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home.css" />
+    <style>
+        .gallery-hero {
+            padding: 120px 24px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f6f1 0%, #ffffff 100%);
+        }
+        
+        .gallery-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #2c5530;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-hero p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        
+        .gallery-section {
+            margin-bottom: 80px;
+        }
+        
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2c5530;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-section-desc {
+            text-align: center;
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            padding: 24px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-item-desc {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+        }
+        
+        .gallery-cta {
+            text-align: center;
+            margin-top: 60px;
+            padding: 60px 24px;
+            background: linear-gradient(135deg, #2c5530 0%, #3d7040 100%);
+            border-radius: 16px;
+        }
+        
+        .gallery-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-cta p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-section h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="ga-header">
+    <div class="ga-nav">
+        <div class="ga-logo">Grand Aura</div>
+        <nav class="ga-menu">
+            <a href="/">Home</a>
+            <a href="/#venues">Venues</a>
+            <a href="/#packages">Packages</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/#contact">Contact</a>
+            <a href="/bookings/my">My Bookings</a>
+            <a class="ga-cta" href="/bookings/create">Reserve Now</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="gallery-hero">
+        <h1>Our Gallery</h1>
+        <p>Explore our exquisite venues and imagine your perfect celebration at Grand Aura</p>
+    </section>
+
+    <!-- Gallery Content -->
+    <div class="gallery-container">
+        <!-- Venue Gallery Section -->
+        <div class="gallery-section">
+            <h2>Our Stunning Venues</h2>
+            <p class="gallery-section-desc">
+                From grand ballrooms to intimate gardens, each space is designed to create unforgettable moments
+            </p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/img/venue-ballroom.jpg" alt="Grand Ballroom" />
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-title">Grand Ballroom</div>
+                        <div class="gallery-item-desc">
+                            Elegant chandeliers and timeless architecture create the perfect setting for grand celebrations
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="/img/venue-garden.jpg" alt="Verdant Garden" />
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-title">Verdant Garden</div>
+                        <div class="gallery-item-desc">
+                            Sunlit gardens surrounded by lush greenery for intimate outdoor ceremonies
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="/img/venue-beach.jpg" alt="Seaside Terrace" />
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-title">Seaside Terrace</div>
+                        <div class="gallery-item-desc">
+                            Breathtaking ocean views and golden sunsets for romantic beachfront celebrations
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="/img/venue-heritage.jpg" alt="Heritage Suite" />
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-title">Heritage Suite</div>
+                        <div class="gallery-item-desc">
+                            Classic architecture with historic charm for elegant, timeless weddings
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="gallery-cta">
+            <h3>Ready to Create Your Perfect Day?</h3>
+            <p>Let us help you plan an unforgettable celebration in one of our exquisite venues</p>
+            <a class="ga-cta ga-cta-large" href="/bookings/create" style="background: #d4af37;">Start Your Reservation</a>
+        </div>
+    </div>
+</main>
+
+<footer class="ga-footer" id="contact">
+    <div class="ga-footer-inner">
+        <div class="ga-footer-content">
+            <!-- Brand Section -->
+            <div class="ga-footer-section">
+                <div class="ga-footer-brand">Grand Aura</div>
+                <p class="ga-footer-tagline">Where Your Forever Begins</p>
+                <div class="ga-footer-contact">
+                    <p>📧 info@grandaura.com</p>
+                    <p>📞 +94 11 234 5678</p>
+                    <p>📍 Colombo, Sri Lanka</p>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="ga-footer-section">
+                <h4>Quick Links</h4>
+                <div class="ga-footer-links">
+                    <a href="/#venues">Our Venues</a>
+                    <a href="/#packages">Packages</a>
+                    <a href="/gallery">Gallery</a>
+                    <a href="/bookings/create">Make a Reservation</a>
+                    <a href="/bookings/my">Manage Booking</a>
+                </div>
+            </div>
+            
+            <!-- Staff Portal -->
+            <div class="ga-footer-section">
+                <h4>Staff Portal</h4>
+                <div class="ga-footer-links">
+                    <a href="/hotel-owner/login">Hotel Owner</a>
+                    <a href="/event-coordinator/login">Event Coordinator</a>
+                    <a href="/catering-manager/login">Catering Manager</a>
+                    <a href="/front-desk/login">Front Desk</a>
+                    <a href="/system-admin/login">System Admin</a>
+                </div>
+            </div>
+            
+            <!-- Legal -->
+            <div class="ga-footer-section">
+                <h4>Legal</h4>
+                <div class="ga-footer-links">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                    <a href="/refund">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ga-footer-bottom">
+            <div class="ga-footer-copy">
+                © 2025 Grand Aura. All rights reserved.
+            </div>
+            <div class="ga-footer-social">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Pinterest">Pinterest</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
