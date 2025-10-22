@@ -56,9 +56,9 @@ public class BookingUiController {
     }
 
     @GetMapping("/success")
-    public String success(Model model) {
-        // The bookingId will be available from flash attributes set in redirect
-        Long bookingId = (Long) model.asMap().get("bookingId");
+    public String success(@RequestParam(value = "id", required = false) Long id, Model model) {
+        // Check for booking ID from query parameter first, then flash attributes
+        Long bookingId = id != null ? id : (Long) model.asMap().get("bookingId");
         if (bookingId != null) {
             Booking booking = bookingService.getBookingById(bookingId).orElse(null);
             if (booking != null) {

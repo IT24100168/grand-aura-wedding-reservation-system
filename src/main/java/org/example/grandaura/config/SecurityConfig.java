@@ -86,7 +86,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/login", "/register", "/hotel-owner/login", "/event-coordinator/login", "/system-admin/login", "/catering-manager/login", "/front-desk/login", "/css/**", "/js/**", "/img/**", "/video/**").permitAll()
-                .requestMatchers("/gallery", "/privacy", "/terms", "/cookies", "/refund").permitAll() // Public informational pages
+                .requestMatchers("/gallery", "/contact", "/privacy", "/terms", "/cookies", "/refund").permitAll() // Public informational pages
                 .requestMatchers("/bookings/**").hasAnyRole("USER", "CATERING_MANAGER", "HOTEL_OWNER", "EVENT_COORDINATOR", "SYSTEM_ADMIN", "FRONT_DESK")
                 .requestMatchers("/hotel-owner/**").hasRole("HOTEL_OWNER")
                 .requestMatchers("/event-coordinator/**").hasRole("EVENT_COORDINATOR")

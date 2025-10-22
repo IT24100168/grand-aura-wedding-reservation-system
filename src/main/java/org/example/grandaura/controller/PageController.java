@@ -18,6 +18,14 @@ public class PageController {
     }
 
     /**
+     * Contact page
+     */
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    /**
      * Privacy Policy page
      */
     @GetMapping("/privacy")
